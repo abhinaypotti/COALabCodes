@@ -1,0 +1,102 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000875f20 .scope module, "lab_tb" "lab_tb" 2 1;
+ .timescale 0 0;
+v00000000008bb840_0 .var "t_a", 0 0;
+v00000000008bb8e0_0 .var "t_b", 0 0;
+v00000000008bb980_0 .var "t_s", 0 0;
+o00000000008790f8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000000008bba20_0 .net "t_x1", 0 0, o00000000008790f8;  0 drivers
+v00000000008bbac0_0 .net "t_y", 0 0, L_0000000000872f50;  1 drivers
+S_00000000012a6740 .scope module, "g1" "two_mux" 2 4, 3 1 0, S_0000000000875f20;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "s";
+    .port_info 1 /INPUT 1 "x0";
+    .port_info 2 /INPUT 1 "x1";
+    .port_info 3 /OUTPUT 1 "y";
+o0000000000879038 .functor BUFZ 1, C4<z>; HiZ drive
+L_00000000012ab7d0 .functor AND 1, o00000000008790f8, o0000000000879038, C4<1>, C4<1>;
+L_00000000012aa050 .functor AND 1, v00000000008bb840_0, L_00000000008bbf60, C4<1>, C4<1>;
+L_00000000008bbf60 .functor NOT 1, v00000000008bb980_0, C4<0>, C4<0>, C4<0>;
+L_0000000000872f50 .functor OR 1, L_00000000012ab7d0, L_00000000012aa050, C4<0>, C4<0>;
+v00000000008760b0_0 .net "s", 0 0, v00000000008bb980_0;  1 drivers
+v0000000000876150_0 .net "sbar", 0 0, L_00000000008bbf60;  1 drivers
+v00000000012ab690_0 .net "t", 0 0, o0000000000879038;  0 drivers
+v00000000012ab730_0 .net "t1", 0 0, L_00000000012ab7d0;  1 drivers
+v00000000012a68d0_0 .net "t2", 0 0, L_00000000012aa050;  1 drivers
+v00000000012a6970_0 .net "x0", 0 0, v00000000008bb840_0;  1 drivers
+v00000000012a6a10_0 .net "x1", 0 0, o00000000008790f8;  alias, 0 drivers
+v00000000012a6ab0_0 .net "y", 0 0, L_0000000000872f50;  alias, 1 drivers
+    .scope S_0000000000875f20;
+T_0 ;
+    %vpi_call 2 8 "$monitor", "S= ", v00000000008bb980_0, " A=", v00000000008bb840_0, " B=", v00000000008bb8e0_0, " Y=", v00000000008bbac0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb980_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb840_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008bb8e0_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "lab_tb.v";
+    "two_multi.v";

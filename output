@@ -1,0 +1,94 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000001055360 .scope module, "lab_tb" "lab_tb" 2 1;
+ .timescale 0 0;
+L_0000000001053b20 .functor OR 1, L_0000000001053990, L_0000000001053800, C4<0>, C4<0>;
+v0000000001052d40_0 .var "t_a", 0 0;
+v0000000001053420_0 .net "t_a1", 0 0, L_0000000001052de0;  1 drivers
+v0000000001053240_0 .var "t_b", 0 0;
+v0000000001053380_0 .net "t_b1", 0 0, L_0000000001052c00;  1 drivers
+v0000000001052980_0 .net "t_y", 0 0, L_0000000001053800;  1 drivers
+v0000000001053060_0 .net "t_y1", 0 0, L_0000000001053990;  1 drivers
+v00000000010536a0_0 .net "t_y2", 0 0, L_0000000001053b20;  1 drivers
+S_0000000001056140 .scope module, "g1" "andgate" 2 4, 3 1 0, S_0000000001055360;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_0000000001053800 .functor AND 1, v0000000001052d40_0, L_0000000001053800, C4<1>, C4<1>;
+v0000000001055680_0 .net "a", 0 0, v0000000001052d40_0;  1 drivers
+v0000000001045a70_0 .net "b", 0 0, L_0000000001053800;  alias, 1 drivers
+v00000000010562d0_0 .net "y", 0 0, L_0000000001053800;  alias, 1 drivers
+S_0000000001056370 .scope module, "g2" "notgate" 2 5, 4 1 0, S_0000000001055360;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+v00000000011c6740_0 .net "a", 0 0, v0000000001052d40_0;  alias, 1 drivers
+v00000000011c67e0_0 .net "y", 0 0, L_0000000001052de0;  alias, 1 drivers
+L_0000000001052de0 .reduce/nor v0000000001052d40_0;
+S_00000000011c6880 .scope module, "g3" "notgate" 2 6, 4 1 0, S_0000000001055360;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+v00000000011c6a10_0 .net "a", 0 0, v0000000001053240_0;  1 drivers
+v00000000011c6ab0_0 .net "y", 0 0, L_0000000001052c00;  alias, 1 drivers
+L_0000000001052c00 .reduce/nor v0000000001053240_0;
+S_000000000109d030 .scope module, "g4" "andgate" 2 7, 3 1 0, S_0000000001055360;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_0000000001053990 .functor AND 1, L_0000000001052de0, L_0000000001052c00, C4<1>, C4<1>;
+v000000000109d1c0_0 .net "a", 0 0, L_0000000001052de0;  alias, 1 drivers
+v000000000109d260_0 .net "b", 0 0, L_0000000001052c00;  alias, 1 drivers
+v000000000109d300_0 .net "y", 0 0, L_0000000001053990;  alias, 1 drivers
+S_00000000010554f0 .scope module, "orgate" "orgate" 5 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+o00000000010582d8 .functor BUFZ 1, C4<z>; HiZ drive
+o0000000001058308 .functor BUFZ 1, C4<z>; HiZ drive
+L_0000000001053b90 .functor OR 1, o00000000010582d8, o0000000001058308, C4<0>, C4<0>;
+v00000000010531a0_0 .net "a", 0 0, o00000000010582d8;  0 drivers
+v0000000001052b60_0 .net "b", 0 0, o0000000001058308;  0 drivers
+v0000000001052ac0_0 .net "y", 0 0, L_0000000001053b90;  1 drivers
+    .scope S_0000000001055360;
+T_0 ;
+    %vpi_call 2 13 "$monitor", "A=", v0000000001052d40_0, " B=", v0000000001053240_0, " Y=", v00000000010536a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001052d40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001053240_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001052d40_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001053240_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001052d40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001053240_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001052d40_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001053240_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "lab_tb.v";
+    "and.v";
+    "not.v";
+    "or.v";

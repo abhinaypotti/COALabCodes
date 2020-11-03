@@ -1,0 +1,79 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000875170 .scope module, "encodergate_tb" "encodergate_tb" 2 1;
+ .timescale 0 0;
+v0000000000a06920_0 .net "a0", 0 0, L_0000000000a0b7b0;  1 drivers
+v0000000000a069c0_0 .net "a1", 0 0, L_0000000000a06b00;  1 drivers
+v0000000000a06a60_0 .var "y0", 0 0;
+v0000000000873350_0 .var "y1", 0 0;
+v00000000008733f0_0 .var "y2", 0 0;
+v0000000000873490_0 .var "y3", 0 0;
+S_0000000000875300 .scope module, "e" "encoder" 2 4, 3 1 0, S_0000000000875170;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "y3";
+    .port_info 1 /INPUT 1 "y2";
+    .port_info 2 /INPUT 1 "y1";
+    .port_info 3 /INPUT 1 "y0";
+    .port_info 4 /OUTPUT 1 "a1";
+    .port_info 5 /OUTPUT 1 "a0";
+L_0000000000a06b00 .functor OR 1, v0000000000873490_0, v00000000008733f0_0, C4<0>, C4<0>;
+L_0000000000a0b7b0 .functor OR 1, v0000000000873490_0, v0000000000873350_0, C4<0>, C4<0>;
+v0000000000a096e0_0 .net "a0", 0 0, L_0000000000a0b7b0;  alias, 1 drivers
+v0000000000875490_0 .net "a1", 0 0, L_0000000000a06b00;  alias, 1 drivers
+v0000000000a0b710_0 .net "y0", 0 0, v0000000000a06a60_0;  1 drivers
+v0000000000a06740_0 .net "y1", 0 0, v0000000000873350_0;  1 drivers
+v0000000000a067e0_0 .net "y2", 0 0, v00000000008733f0_0;  1 drivers
+v0000000000a06880_0 .net "y3", 0 0, v0000000000873490_0;  1 drivers
+    .scope S_0000000000875170;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "y3= ", v0000000000873490_0, " y2= ", v00000000008733f0_0, " y1=", v0000000000873350_0, " y0= ", v0000000000a06a60_0, "  a1= ", v0000000000a069c0_0, " a0= ", v0000000000a06920_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000873490_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008733f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000873350_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000a06a60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000873490_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008733f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000873350_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a06a60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000873490_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008733f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000873350_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a06a60_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000873490_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008733f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000873350_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000a06a60_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "encodergatelevel_tb.v";
+    "encodergatelevel.v";
